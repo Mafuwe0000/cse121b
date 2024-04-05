@@ -3,7 +3,7 @@
 /* Declare and initialize global variables */
 const templesElement=document.createElement('templesElement');
 const element = document.getElementById('temples');
-
+element.append(templesElement);
 let templeList = [];
 /* async displayTemples Function */
 const displayTemples = (temples)=>{ 
@@ -29,7 +29,6 @@ const displayTemples = (temples)=>{
         article.appendChild(img);
         
         templesElement.append(article);
-        element.append(templesElement);
 
     });
 
