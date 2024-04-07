@@ -3,7 +3,7 @@
 
 const addcountry = document.getElementById('add-country');
 const removecountry = document.getElementById('remove-country');
-const refresh = document.getElementById('filter-country');
+const refresh = document.getElementById('refresh-country');
 
 // Calling the function 
 getCountry();
@@ -35,9 +35,9 @@ async function getCountry(){
 
 
     const country = {
-        countryName :`${'Continent:   '}${resultado.continents} \n ${"Country:  "} ${resultado.altSpellings[1]} ${'Capital:  '}  ${resultado.capital[0]} ${"TIME:  "} ${resultado.timezones
-    [0]        }`
-    }
+        countryName :`${'Continent:   '}${resultado.continents} \n ${"Country:  "} ${resultado.name.common}  ${'Capital:  '}  ${resultado.capital[0]} ${"TIME:  "} ${resultado.timezones
+    [0]         } `   }
+
      console.log(country);
 
     addData(country);
@@ -49,7 +49,7 @@ function addData (obj){
 
     updateDOM()
 }
-
+//
 //update DOM
 function updateDOM(providedData= data){
     //clear main div
@@ -68,12 +68,19 @@ function reloadLocation(){
     location.reload();
 }
 
+//remove country
+function removeCountry(obj){
+    data.pop(obj)
+
+    updateDOM()
+}
 
 // event Listener
 
 addcountry.addEventListener('click', getCountry);
-refresh.addEventListener("click", reloadLocation)
-//filtercountry.addEventListener('click', filterCountry())
+refresh.addEventListener("click", reloadLocation);
+
+removecountry.addEventListener('click', removeCountry);
     
 
     
